@@ -5,11 +5,12 @@ require_relative 'computer'
 class Controller
   include View
   attr_reader :player, :computer, :board
-  attr_accessor :keep_playing, :players
+  attr_accessor :keep_playing, :players, :last_move
   def initialize(args={})
     @players = args[:players] || []
     @board = args[:board]
     @keep_playing = true
+    @last_move
   end
 
   def run
@@ -45,7 +46,10 @@ class Controller
   def move(player)
     clear
     show_board(@board)
+    display(@last_move)
+    sleep(1)
     player.move(@board)
+    last_move_info(player)
   end
 
   def init
@@ -63,12 +67,12 @@ class Controller
         return display("Winner: #{player.class} #{player.name}")
       end
     end
-    display('tie')
+    display('TIE GAME')
   end
 
   def update_player_info
     players.each_with_index do |player, i|
-      display("For #{player.class} #{i+1} \n")
+      display("For #{player.class.superclass} #{(i+1)}: #{player.class} \n")
       player.get_info(players[i-1].marker)
       players[i-1].update_op_mrkr(player.marker)
     end
@@ -77,6 +81,10 @@ class Controller
   def final_board
     clear
     show_board(@board)
+  end
+
+  def last_move_info(player)
+    @last_move = "#{player.name} chose #{player.last_move}"
   end
 
   def create_players(response)
@@ -104,7 +112,7 @@ class Controller
     until res == "y" || res == "n"
       res = disp_and_res("invalid response, please enter 'Y' or 'N'.").downcase
     end
-    @keep_playing = false if res == 'n'
+    res == 'n' ? @keep_playing = false : @last_move = ''
   end
 
   def new_board?

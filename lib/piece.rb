@@ -1,10 +1,11 @@
 class Piece
   include View
-  attr_accessor :marker, :opponent_marker, :name
+  attr_accessor :marker, :opponent_marker, :name, :last_move
   def initialize(args={})
     @marker = args[:marker] || default_marker
     @opponent_marker = args[:opponent_marker] || def_op_marker
     @name = args[:name] || def_name
+    @last_move = nil
     post_initialize(args)
   end
 
@@ -39,7 +40,7 @@ class Piece
   private
 
   def get_name
-    @name = disp_and_res("What's your name for #{self.class}?")
+    @name = disp_and_res("What's the name for #{self.class}?")
   end
 
   def get_marker(other_player_marker = nil)

@@ -3,7 +3,6 @@ describe Player do
   let(:board) {Board.new({board_size: 3, board: [["_","X","O"],["O","X","_"],["_","O","X"]]})}
   let(:player) {Player.new(args={marker: 'X'})}
 
-
   it "should respond to name" do
     expect(player.name).to eq("Player")
   end
