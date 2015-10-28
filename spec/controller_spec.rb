@@ -2,7 +2,7 @@ require_relative 'spec_helper'
 describe Controller do
   let(:board) {Board.new({board_size: 3})}
   let(:controller) {Controller.new(board: board)}
-  let(:player) {Player.new(marker: 'X')}
+  let(:player) {Player.new(marker: 'X', opponent_marker: 'O')}
   let(:computer) {Computer.new(marker: 'O', opponent_marker: 'X')}
   let(:controller_two){Controller.new(board: board, players:[player, computer])}
   let(:win_board){Board.new({board_size: 3, board:[["_","X","O"],["O","O","X"],["O","_","X"]]})}
@@ -49,11 +49,13 @@ describe Controller do
 
   describe "it should find the winner" do
     it "should report the winner on a won board" do
-      expect(controller_three.send :find_winner).to eq("Winner: Computer Computer")
+      expect(STDOUT).to receive(:puts).with("Winner: Computer Computer")
+      controller_three.send :find_winner
     end
 
     it "should report a tie when it's a tie" do
-      expect(controller_four.send :find_winner).to eq("tie")
+      expect(STDOUT).to receive(:puts).with("tie")
+      controller_four.send :find_winner
     end
   end
 end
