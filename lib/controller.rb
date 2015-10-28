@@ -2,7 +2,6 @@ require_relative 'view'
 require_relative 'player'
 require_relative 'board'
 require_relative 'computer'
-require 'pry'
 class Controller
   include View
   attr_reader :player, :computer, :board
