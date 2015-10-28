@@ -54,7 +54,7 @@ describe Controller do
     end
 
     it "should report a tie when it's a tie" do
-      expect(STDOUT).to receive(:puts).with("tie")
+      expect(STDOUT).to receive(:puts).with("TIE GAME")
       controller_four.send :find_winner
     end
   end
