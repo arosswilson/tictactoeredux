@@ -80,5 +80,4 @@ class Board
     end
     nil
   end
-
 end
