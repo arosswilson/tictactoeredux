@@ -18,7 +18,7 @@ class Controller
       new_board?
       game_loop
       final_board
-      display(find_winner)
+      find_winner
       play_again?
     end
   end
@@ -60,10 +60,10 @@ class Controller
     marker = board.game_over? if board.game_over?
     players.each do |player|
       if marker == player.marker
-        return "Winner: #{player.class} #{player.name}"
+        return display("Winner: #{player.class} #{player.name}")
       end
     end
-    return 'tie'
+    display('tie')
   end
 
   def update_player_info
