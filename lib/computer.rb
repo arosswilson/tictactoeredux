@@ -1,7 +1,6 @@
 require_relative 'board.rb'
 require_relative 'view'
 require_relative 'piece'
-require 'pry'
 class Computer < Piece
   attr_accessor :best_move
   def post_initialize(args)
