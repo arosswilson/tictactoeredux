@@ -1,0 +1,5 @@
+require_relative '../lib/board'
+require_relative '../lib/computer'
+require_relative '../lib/player'
+require_relative '../lib/view'
+require_relative '../lib/controller'
