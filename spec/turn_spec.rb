@@ -18,4 +18,10 @@ describe Turn do
     turn.show_available_moves(["1,1"])
   end
 
+  it "should ensure that the user's move is valid" do
+    allow(turn).to receive(:gets).and_return("1,1")
+    turn.get_users_move
+    expect(turn.users_move).to eq("1,1")
+  end
+
 end
