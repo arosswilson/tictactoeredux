@@ -41,8 +41,7 @@ describe Turn do
 
   it "should continue to prompt a user for a move until it gets one in the available moves array" do
     allow(turn).to receive(:gets).and_return("2,1", "1,1")
-    turn.take_turn(["1,1", "2,2"])
-    expect(turn).to receive(:gets).exactly(2).times
+    turn.take_turn(["1,1", "2,2"], player)
     expect(turn.users_move).to eq("1,1")
   end
 
