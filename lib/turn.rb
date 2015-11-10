@@ -8,6 +8,10 @@ class Turn
     puts "It's your turn #{player.name}. Where would you like to move?"
   end
 
+  def prompt_again
+    puts "That move isn't an available move, please pick a move from the list"
+  end
+
   def show_available_moves(moves)
     moves.each{|move| puts move}
   end
@@ -20,4 +24,16 @@ class Turn
   def verify_move_is_available(moves)
     moves.include? @users_move
   end
+
+  def take_turn(moves, player)
+    prompt(player)
+    show_available_moves(moves)
+    get_users_move
+    until verify_move_is_available(moves)
+      prompt_again
+      show_available_moves
+      get_users_move
+    end
+  end
+
 end
