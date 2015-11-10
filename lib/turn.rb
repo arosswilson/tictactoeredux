@@ -31,9 +31,8 @@ class Turn
     get_users_move
     until verify_move_is_available(moves)
       prompt_again
-      show_available_moves
+      show_available_moves(moves)
       get_users_move
     end
   end
-
 end
