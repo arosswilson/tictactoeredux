@@ -27,6 +27,7 @@ describe Turn do
 
   it "should validate that the user's selection is in the array of available moves" do
     allow(turn).to receive(:gets).and_return("1,1")
+    turn.get_users_move
     expect(turn.verify_move_is_available(["1,1", "2,2"])).to be_truthy
   end
 
