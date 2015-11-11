@@ -60,5 +60,13 @@ describe Rules do
     it "should be falsey if the game isn't over" do
       expect(rules_one.game_over?).to be_falsey
     end
+
+    it "should return the winning piece if a piece has won" do
+      expect(rules_two.game_over?).to eq("X")
+    end
+
+    it "should return 'tie' if all the spots are taken and it's tied" do
+      expect(rules_five.game_over?).to eq("tie")
+    end
   end
 end
