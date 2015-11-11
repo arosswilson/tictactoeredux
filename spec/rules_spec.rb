@@ -43,4 +43,10 @@ describe Rules do
       expect(rules_four.diag_check).to eq("X")
     end
   end
+
+  describe "tie checks" do
+    it "should return nil on a board that has blank spots" do
+      expect(rules_one.tie_check).to eq(nil)
+    end
+  end
 end
