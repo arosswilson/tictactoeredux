@@ -10,12 +10,12 @@ describe Rules do
   let(:rules_three) {Rules.new({board: col_winner})}
 
   it "should created a new rules object with Rules.new" do
-    expect(rules.class).to eq(Rules)
+    expect(rules_one.class).to eq(Rules)
   end
 
   describe "row checks" do
     it "should return nil on a row check if there isn't a winner" do
-      expect(rules.row_check).to eq(nil)
+      expect(rules_one.row_check).to eq(nil)
     end
 
     it "should return the winning piece if the board has a row winner" do
