@@ -7,4 +7,12 @@ describe Game do
     expect(game.class).to eq(Game)
   end
 
+  it "should initialize with a board" do
+    expect(game.board.class).to eq(Board)
+  end
+
+  it "should initiaize with rule" do
+    expect(game.rules.class).to eq(Rules)
+  end
+
 end
