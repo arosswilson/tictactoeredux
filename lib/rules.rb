@@ -5,6 +5,14 @@ class Rules
     @board = @board_obj.board
   end
 
+  def game_over?
+    game_over ||= row_check
+    game_over ||= col_check
+    game_over ||= diag_check
+    game_over ||= tie_check
+    game_over
+  end
+
   def row_check(board = @board)
     board.each do |row|
       return row[0] if row.uniq.length == 1 && !(row.include?('_'))
