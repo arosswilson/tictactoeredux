@@ -25,7 +25,7 @@ describe Rules do
 
   describe "column checks" do
     it "should return nil on a column check if there isn't a winner" do
-      expect(rules_three.col_check(board.board)).to eq(nil)
+      expect(rules_three.col_check).to eq(nil)
     end
   end
 end
