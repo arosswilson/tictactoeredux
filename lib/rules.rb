@@ -23,4 +23,8 @@ class Rules
     return diag_two[0] if diag_two.uniq.length == 1 && !(diag_two.include?('_'))
   end
 
+  def tie_check
+    return "tie" if !(board.flatten.include?('_'))
+  end
+
 end
