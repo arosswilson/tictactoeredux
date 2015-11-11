@@ -19,4 +19,10 @@ describe Rules do
       expect(rules.row_check(row_winner.board)).to eq("X")
     end
   end
+
+  describe "column checks" do
+    it "should return nil on a column check if there isn't a winner" do
+      expect(rules.col_check(board.board)).to eq(nil)
+    end
+  end
 end
