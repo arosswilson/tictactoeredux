@@ -8,6 +8,7 @@ describe Rules do
   let(:rules_one) {Rules.new({board: board})}
   let(:rules_two) {Rules.new({board: row_winner})}
   let(:rules_three) {Rules.new({board: col_winner})}
+  let(:rules_four) {Rules.new({board: winner})}
 
   it "should created a new rules object with Rules.new" do
     expect(rules_one.class).to eq(Rules)
@@ -30,6 +31,12 @@ describe Rules do
 
     it "should return the winning piece if the board has a col winner" do
       expect(rules_three.col_check).to eq("O")
+    end
+  end
+
+  describe "diag checks" do
+    it "should return nil on a diagonal check if there is no winner" do
+      expect(rules_one.diag_check).to eq(nil)
     end
   end
 end
