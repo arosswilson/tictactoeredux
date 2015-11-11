@@ -55,4 +55,10 @@ describe Rules do
       expect(rules_five.tie_check).to eq("tie")
     end
   end
+
+  describe "game_over check" do
+    it "should be falsey if the game isn't over" do
+      expect(rules_one.game_over?).to be_falsey
+    end
+  end
 end
