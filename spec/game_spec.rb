@@ -20,4 +20,9 @@ describe Game do
     game.welcome_message
   end
 
+  it "should clear the screen" do
+    expect(STDOUT).to receive(:puts).with("\e[H\e[2J")
+    game.clear
+  end
+
 end
