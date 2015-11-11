@@ -11,7 +11,7 @@ describe Rules do
 
   describe "row checks" do
     it "should return nil on a row check if there isn't a winner" do
-      expect(rules.row_check(board)).to eq(nil)
+      expect(rules.row_check(board.board)).to eq(nil)
     end
   end
 end
