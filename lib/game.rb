@@ -14,4 +14,15 @@ class Game
     puts "\e[H\e[2J"
   end
 
+  def create_players(response)
+    case response
+    when '1'
+      @players = [Player.new, Player.new]
+    when '2'
+      @players = [Computer.new, Computer.new]
+    when '3'
+      @players = [Player.new, Computer.new]
+    end
+  end
+
 end
