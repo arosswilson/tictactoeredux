@@ -15,4 +15,9 @@ describe Game do
     expect(game.rules.class).to eq(Rules)
   end
 
+  it "should welcome the players when it starts" do
+    expect(STDOUT).to receive(:puts).with("Welcome to Tic-Tac-Toe!")
+    game.welcome_message
+  end
+
 end
