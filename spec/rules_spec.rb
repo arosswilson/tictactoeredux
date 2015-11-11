@@ -27,5 +27,9 @@ describe Rules do
     it "should return nil on a column check if there isn't a winner" do
       expect(rules_one.col_check).to eq(nil)
     end
+
+    it "should return the winning piece if the board has a col winner" do
+      expect(rules_three.col_check).to eq("O")
+    end
   end
 end
