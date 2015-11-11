@@ -5,10 +5,12 @@ describe Rules do
   let(:winner) {Board.new({board_size: 3, board: [["X","_","O"],["O","X","_"],["_","O","X"]]})}
   let(:row_winner) {Board.new({board_size: 3, board: [["X","X","X"],["O","O","_"],["_","O","X"]]})}
   let(:col_winner) {Board.new({board_size: 3, board: [["X","O","X"],["X","O","_"],["_","O","X"]]})}
+  let(:tie) {Board.new({board_size: 3, board:[["X","O","X"],["X","O","O"], ["O","X","X"]]})}
   let(:rules_one) {Rules.new({board: board})}
   let(:rules_two) {Rules.new({board: row_winner})}
   let(:rules_three) {Rules.new({board: col_winner})}
   let(:rules_four) {Rules.new({board: winner})}
+  let(:rules_five) {Rules.new({board: tie})}
 
   it "should created a new rules object with Rules.new" do
     expect(rules_one.class).to eq(Rules)
@@ -47,6 +49,10 @@ describe Rules do
   describe "tie checks" do
     it "should return nil on a board that has blank spots" do
       expect(rules_one.tie_check).to eq(nil)
+    end
+
+    it "should return 'tie' on a board with no blank spaces" do
+      expect(rules_five.tie_check).to eq("tie")
     end
   end
 end
