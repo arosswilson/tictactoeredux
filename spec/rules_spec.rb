@@ -38,5 +38,9 @@ describe Rules do
     it "should return nil on a diagonal check if there is no winner" do
       expect(rules_one.diag_check).to eq(nil)
     end
+
+    it "should return the winning piece on a diagonal winner" do
+      expect(rules_four.diag_check).to eq("X")
+    end
   end
 end
