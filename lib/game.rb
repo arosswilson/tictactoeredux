@@ -5,4 +5,8 @@ class Game
     @rules = args[:rules] || Rules.new({board: board})
   end
 
+  def welcome_message
+    puts "Welcome to Tic-Tac-Toe!"
+  end
+
 end
