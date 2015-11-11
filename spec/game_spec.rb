@@ -25,4 +25,10 @@ describe Game do
     game.clear
   end
 
+  it "should create players" do
+    game.create_players("1")
+    expect(game.players[0]).to be_a(Player)
+    expect(game.players[1]).to be_a(Player)
+  end
+
 end
