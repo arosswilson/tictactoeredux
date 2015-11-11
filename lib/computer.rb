@@ -1,7 +1,7 @@
 require_relative 'board.rb'
 require_relative 'view'
-require_relative 'piece'
-class Computer < Piece
+require_relative 'player'
+class Computer < Player
 
   def default_marker
     nil

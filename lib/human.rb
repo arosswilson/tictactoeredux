@@ -1,5 +1,5 @@
-require_relative 'piece'
-class Human < Piece
+require_relative 'player'
+class Human < Player
 
   def default_marker
     "X"

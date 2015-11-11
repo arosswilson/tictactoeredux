@@ -1,4 +1,4 @@
-class Piece
+class Player
   include View
   attr_accessor :marker, :opponent_marker, :name, :last_move
   def initialize(args={})
