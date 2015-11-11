@@ -27,14 +27,14 @@ describe Game do
 
   it "should create players" do
     game.create_players("1")
-    expect(game.players[0]).to be_a(Player)
-    expect(game.players[1]).to be_a(Player)
+    expect(game.players[0]).to be_a(Human)
+    expect(game.players[1]).to be_a(Human)
   end
 
   it "should prompt user for game type" do
     allow(game).to receive(:gets).and_return("2")
     game.get_game_type
-    expect(game.players[0]).to be_a(Player)
+    expect(game.players[0]).to be_a(Human)
     expect(game.players[1]).to be_a(Computer)
   end
 

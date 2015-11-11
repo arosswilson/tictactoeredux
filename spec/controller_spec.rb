@@ -2,7 +2,7 @@ require_relative 'spec_helper'
 describe Controller do
   let(:board) {Board.new({board_size: 3})}
   let(:controller) {Controller.new(board: board)}
-  let(:player) {Player.new(marker: 'X', opponent_marker: 'O')}
+  let(:player) {Human.new(marker: 'X', opponent_marker: 'O')}
   let(:computer) {Computer.new(marker: 'O', opponent_marker: 'X')}
   let(:controller_two){Controller.new(board: board, players:[player, computer])}
   let(:win_board){Board.new({board_size: 3, board:[["_","X","O"],["O","O","X"],["O","_","X"]]})}
@@ -14,8 +14,8 @@ describe Controller do
     it "should create two players if user chooses human v human" do
       allow(controller).to receive(:disp_and_res).and_return("1")
       controller.send :get_game_type
-      expect(controller.players[0].class).to eq(Player)
-      expect(controller.players[1].class).to eq(Player)
+      expect(controller.players[0].class).to eq(Human)
+      expect(controller.players[1].class).to eq(Human)
     end
 
     it "should create two computers if user chooses computer v computer" do
@@ -28,7 +28,7 @@ describe Controller do
     it "should create a player and computer if user chooses player v computer" do
       allow(controller).to receive(:disp_and_res).and_return("3")
       controller.send :get_game_type
-      expect(controller.players[0].class).to eq(Player)
+      expect(controller.players[0].class).to eq(Human)
       expect(controller.players[1].class).to eq(Computer)
     end
   end
@@ -38,7 +38,7 @@ describe Controller do
     controller.send :get_game_type
     controller.send :choose_order
     expect(controller.players[0].class).to eq(Computer)
-    expect(controller.players[1].class).to eq(Player)
+    expect(controller.players[1].class).to eq(Human)
   end
 
   it "should make a move for a player" do

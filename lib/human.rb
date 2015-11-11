@@ -1,5 +1,5 @@
 require_relative 'piece'
-class Player < Piece
+class Human < Piece
 
   def default_marker
     "X"
@@ -10,7 +10,7 @@ class Player < Piece
   end
 
   def def_name
-    "Player"
+    "Human"
   end
 
   def move(board)

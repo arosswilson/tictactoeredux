@@ -1,10 +1,10 @@
 require_relative '../lib/board'
 require_relative '../lib/computer'
-require_relative '../lib/player'
+require_relative '../lib/human'
 describe Board do
   let(:winner) {Board.new({board_size: 3, board: [["X","_","O"],["O","X","_"],["_","O","X"]]})}
   let(:test_board) {Board.new}
-  let(:player) {Player.new({marker: "X", name: "Ross"})}
+  let(:player) {Human.new({marker: "X", name: "Ross"})}
   let(:computer) {Computer.new({marker: "O"})}
   let(:board) {Board.new({board_size: 3, board: [["_","X","O"],["O","X","_"],["_","O","X"]]})}
 

@@ -17,7 +17,7 @@ class Game
   def create_players(response)
     case response
     when '1'
-      @players = [Player.new, Player.new]
+      @players = [Human.new, Human.new]
     when '2'
       @players = [Computer.new, Computer.new]
     when '3'
