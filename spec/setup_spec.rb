@@ -25,4 +25,12 @@ describe Setup do
     expect(game.players[0]).to be_a(Human)
     expect(game.players[1]).to be_a(Computer)
   end
+
+  it "should change the order of the players based on user input" do
+    allow(setup).to receive(:gets).and_return("3","2")
+    setup.get_game_type(game)
+    setup.choose_order(game)
+    expect(game.players[0]).to be_a(Computer)
+    expect(game.players[1]).to be_a(Human)
+  end
 end
