@@ -8,15 +8,15 @@ class GametypeSetup #consider extracting update player info and choose order to 
     choose_order(game)
   end
 
-  def welcome_message
+  def self.welcome_message
     puts "Welcome to Tic-Tac-Toe!"
   end
 
-  def clear
+  def self.clear
     puts "\e[H\e[2J"
   end
 
-  def create_players(response, game)
+  def self.create_players(response, game)
     case response
     when '1'
       game.players = [Human.new, Human.new]
@@ -27,7 +27,7 @@ class GametypeSetup #consider extracting update player info and choose order to 
     end
   end
 
-  def get_game_type(game)
+  def self.get_game_type(game)
     response = nil
     response = display_message_and_get_response("Would you like to play \n 1. human v. human \n 2. computer v. computer \n 3. human v. computer \nPlease enter a numerical choice")
     until response == '1' || response == '2' || response == '3'
@@ -36,12 +36,12 @@ class GametypeSetup #consider extracting update player info and choose order to 
     create_players(response, game)
   end
 
-  def display_message_and_get_response(message)
+  def self.display_message_and_get_response(message)
     puts message
     return gets.chomp
   end
 
-  def choose_order(game)
+  def self.choose_order(game)
     response =''
     until response == '1' || response == '2'
       response = display_message_and_get_response("Please enter the number for the player that you want to go first: \n 1. #{game.players[0].class} #{game.players[0].marker} \n 2. #{game.players[1].class} #{game.players[1].marker}")
@@ -49,7 +49,7 @@ class GametypeSetup #consider extracting update player info and choose order to 
     game.players.reverse! if response == '2'
   end
 
-  def update_player_info(game)
+  def self.update_player_info(game)
     game.players.each_with_index do |player, i|
       puts "For #{player.class.superclass} #{(i+1)}: #{player.class} \n"
       player.get_info(game.players[i-1].marker)
