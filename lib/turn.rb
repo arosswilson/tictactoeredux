@@ -1,8 +1,10 @@
 require 'pry'
 class Turn
   attr_accessor :users_move
+  attr_reader :player
   def initialize
-    @users_move = ''
+    @users_move = nil
+    @player = nil
   end
   def prompt(player)
     puts "It's your turn #{player.name}. Where would you like to move?"
@@ -26,6 +28,7 @@ class Turn
   end
 
   def take_turn(moves, player)
+    @player = player
     prompt(player)
     show_available_moves(moves)
     get_users_move
@@ -33,6 +36,12 @@ class Turn
       prompt_again
       show_available_moves(moves)
       get_users_move
+    end
+  end
+
+  def last_move
+    if player && users_move
+      puts "#{player.name} chose #{users_move}"
     end
   end
 end
