@@ -34,5 +34,11 @@ class Setup
     return gets.chomp
   end
 
-
+  def choose_order(game)
+    response =''
+    until response == '1' || response == '2'
+      response = display_message_and_get_response("Please enter the number for the player that you want to go first: \n 1. #{game.players[0].class} #{game.players[0].marker} \n 2. #{game.players[1].class} #{game.players[1].marker}")
+    end
+    game.players.reverse! if response == '2'
+  end
 end
