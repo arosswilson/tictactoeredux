@@ -7,7 +7,6 @@ class Game
   attr_reader :moves
   def initialize(args={})
     @board = args[:board] || Board.new({board_size: 3})
-    @moves = @board.possible_moves
     @rules = args[:rules] || Rules.new({board: board})
     @players = args[:players] || []
     @turn = args[:turn] || Turn.new
@@ -46,7 +45,7 @@ class Game
     clear
     show_board
     turn.last_move
-    turn.take_turn(moves, player)
+    turn.take_turn(board, player)
   end
 
   def show_board
@@ -59,5 +58,5 @@ class Game
 
 end
 
-game = Game.new
-game.run
+# game = Game.new
+# game.run
