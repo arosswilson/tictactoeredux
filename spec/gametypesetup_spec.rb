@@ -1,7 +1,7 @@
 require_relative 'spec_helper'
 
-describe Setup do
-  let(:setup) {Setup.new}
+describe GametypeSetup do
+  let(:setup) {GametypeSetup.new}
   let(:game) {Game.new}
   it "should welcome the players when it starts" do
     expect(STDOUT).to receive(:puts).with("Welcome to Tic-Tac-Toe!")
@@ -32,5 +32,17 @@ describe Setup do
     setup.choose_order(game)
     expect(game.players[0]).to be_a(Computer)
     expect(game.players[1]).to be_a(Human)
+  end
+
+  it "should get player info for each player" do
+    allow(setup).to receive(:display_message_and_get_response).and_return("1")
+    setup.get_game_type(game)
+    allow(game.players[0]).to receive(:disp_and_res).and_return("Ross","V")
+    allow(game.players[1]).to receive(:disp_and_res).and_return("Miles","O")
+    setup.update_player_info(game)
+    expect(game.players[0]).to be_a(Human)
+    expect(game.players[1]).to be_a(Human)
+    expect(game.players[0].name).to eq("Ross")
+    expect(game.players[1].name).to eq("Miles")
   end
 end

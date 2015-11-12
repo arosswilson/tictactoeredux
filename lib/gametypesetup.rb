@@ -1,5 +1,12 @@
-class Setup
+class GametypeSetup #consider extracting update player info and choose order to a player setup class
 
+  def self.run(game)
+    clear
+    welcome_message
+    get_game_type(game)
+    update_player_info(game)
+    choose_order(game)
+  end
 
   def welcome_message
     puts "Welcome to Tic-Tac-Toe!"
@@ -40,5 +47,13 @@ class Setup
       response = display_message_and_get_response("Please enter the number for the player that you want to go first: \n 1. #{game.players[0].class} #{game.players[0].marker} \n 2. #{game.players[1].class} #{game.players[1].marker}")
     end
     game.players.reverse! if response == '2'
+  end
+
+  def update_player_info(game)
+    game.players.each_with_index do |player, i|
+      puts "For #{player.class.superclass} #{(i+1)}: #{player.class} \n"
+      player.get_info(game.players[i-1].marker)
+      game.players[i-1].update_op_mrkr(player.marker)
+    end
   end
 end
