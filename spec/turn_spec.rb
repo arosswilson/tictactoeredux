@@ -3,6 +3,7 @@ require_relative 'spec_helper'
 describe Turn do
   let(:turn) {Turn.new}
   let(:player) {Human.new}
+  let(:board) {Board.new({board_size: 3, board: [["_","X","O"],["_","X","_"],["_","O","X"]]})}
 
   it "should created a new turn object with Turn.new" do
     expect(turn.class).to eq(Turn)
@@ -40,10 +41,9 @@ describe Turn do
   end
 
   it "should continue to prompt a user for a move until it gets one in the available moves array" do
-    allow(turn).to receive(:gets).and_return("2,1", "1,1")
-    turn.take_turn(["1,1", "2,2"], player)
-    expect(turn.users_move).to eq("1,1")
+    allow(turn).to receive(:gets).and_return("2,1", "1,0")
+    turn.take_turn(board, player)
+    expect(turn.users_move).to eq("1,0")
+    expect(board.board).to eq([["_","X","O"],["X","X","_"],["_","O","X"]])
   end
-
-
 end
