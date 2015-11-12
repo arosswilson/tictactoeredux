@@ -21,8 +21,22 @@ class Game
     when '2'
       @players = [Computer.new, Computer.new]
     when '3'
-      @players = [Player.new, Computer.new]
+      @players = [Human.new, Computer.new]
     end
+  end
+
+  def get_game_type
+    response = nil
+    response = display_message_and_get_response("Would you like to play \n 1. human v. human \n 2. computer v. computer \n 3. human v. computer \nPlease enter a numerical choice")
+    until response == '1' || response == '2' || response == '3'
+      response = display_message_and_get_response("Would you like to play \n 1. human v. human \n 2. computer v. computer \n 3. human v. computer \nPlease enter a numerical choice")
+    end
+    create_players(response)
+  end
+
+  def display_message_and_get_response(message)
+    puts message
+    return gets.chomp
   end
 
 end
