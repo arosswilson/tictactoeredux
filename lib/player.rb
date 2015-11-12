@@ -1,3 +1,4 @@
+require_relative 'view'
 class Player
   include View
   attr_accessor :marker, :opponent_marker, :name, :last_move
