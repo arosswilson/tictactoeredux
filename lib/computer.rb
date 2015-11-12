@@ -16,8 +16,8 @@ class Computer < Player
   end
 
   def move(board)
-    minimax(board,true,)
-    board.move(marker, @last_move)
+    minimax(board,true)
+    # board.move(marker, @last_move)
   end
 
   private
