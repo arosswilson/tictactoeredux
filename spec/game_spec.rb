@@ -32,7 +32,7 @@ describe Game do
   end
 
   it "should prompt user for game type" do
-    allow(game).to receive(:gets).and_return("2")
+    allow(game).to receive(:gets).and_return("3")
     game.get_game_type
     expect(game.players[0]).to be_a(Human)
     expect(game.players[1]).to be_a(Computer)
