@@ -37,8 +37,8 @@ describe GametypeSetup do
   it "should get player info for each player" do
     allow(GametypeSetup).to receive(:display_message_and_get_response).and_return("1")
     GametypeSetup.get_game_type(game)
-    allow(game.players[0]).to receive(:disp_and_res).and_return("Ross","V")
-    allow(game.players[1]).to receive(:disp_and_res).and_return("Miles","O")
+    allow(game.players[0]).to receive(:display_message_and_get_response).and_return("Ross","V")
+    allow(game.players[1]).to receive(:display_message_and_get_response).and_return("Miles","O")
     GametypeSetup.update_player_info(game)
     expect(game.players[0]).to be_a(Human)
     expect(game.players[1]).to be_a(Human)
