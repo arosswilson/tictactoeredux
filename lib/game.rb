@@ -35,10 +35,10 @@ class Game
     marker = board.game_over? if board.game_over?
     players.each do |player|
       if marker == player.marker
-        return display("Winner: #{player.class} #{player.name}")
+        return puts"Winner: #{player.class} #{player.name}"
       end
     end
-    display('TIE GAME')
+    puts'TIE GAME'
   end
 
   def move_sequence(player)
@@ -58,5 +58,5 @@ class Game
 
 end
 
-# game = Game.new
-# game.run
+game = Game.new
+game.run
