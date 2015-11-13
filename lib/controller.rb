@@ -1,5 +1,5 @@
 require_relative 'view'
-require_relative 'player'
+require_relative 'human'
 require_relative 'board'
 require_relative 'computer'
 class Controller
@@ -90,11 +90,11 @@ class Controller
   def create_players(response)
     case response
     when '1'
-      @players = [Player.new, Player.new]
+      @players = [Human.new, Human.new]
     when '2'
       @players = [Computer.new, Computer.new]
     when '3'
-      @players = [Player.new, Computer.new]
+      @players = [Human.new, Computer.new]
     end
   end
 

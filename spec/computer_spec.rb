@@ -26,12 +26,12 @@ describe Computer do
   describe "it should make the best move" do
     it "will win if it can" do
       computer.move(board)
-      expect(board.board).to eq([["_","X","O"],["O","O","X"],["O","_","X"]])
+      expect(computer.last_move).to eq("1,1")
     end
 
     it "will prevent the opponent from winning" do
       computer.move(board_two)
-      expect(board_two.board).to eq([["O","X","_"],["O","X","_"],["O","_","X"]])
+      expect(computer.last_move).to eq("0,0")
     end
   end
 end
