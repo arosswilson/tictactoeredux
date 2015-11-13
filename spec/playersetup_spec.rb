@@ -3,10 +3,6 @@ require_relative 'spec_helper'
 describe PlayerSetup do
   let(:game) {Game.new}
 
-  it "should have the class 'PlayerSetup'" do
-    expect(playersetup.class).to eq(PlayerSetup)
-  end
-
   it "should change the order of the players based on user input" do
     allow(GametypeSetup).to receive(:gets).and_return("3")
     allow(PlayerSetup).to receive(:gets).and_return("2")
