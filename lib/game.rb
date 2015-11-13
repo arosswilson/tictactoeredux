@@ -2,6 +2,7 @@ require_relative 'board'
 require_relative 'rules'
 require_relative 'turn'
 require_relative 'gametypesetup'
+require_relative 'playersetup'
 class Game
   attr_accessor :board, :rules, :players, :turn
   attr_reader :moves
@@ -20,6 +21,7 @@ class Game
 
   def get_started
     GametypeSetup.run(self)
+    PlayerSetup.run(self)
   end
 
   def game_loop
