@@ -55,8 +55,4 @@ class Game
   def clear
     puts "\e[H\e[2J"
   end
-
 end
-
-game = Game.new
-game.run
