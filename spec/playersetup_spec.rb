@@ -1,9 +1,7 @@
 require_relative 'spec_helper'
 
 describe PlayerSetup do
-  let(:playersetup) {PlayerSetup.new}
   let(:game) {Game.new}
-  let(:gametypesetup) {Gametypesetup.new}
 
   it "should have the class 'PlayerSetup'" do
     expect(playersetup.class).to eq(PlayerSetup)
