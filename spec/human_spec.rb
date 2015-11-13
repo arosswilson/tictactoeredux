@@ -21,10 +21,4 @@ describe Human do
     expect(player.name).to eq("Ross")
     expect(player.marker).to eq("V")
   end
-
-  it "should make a move on a board" do
-    allow(player).to receive(:disp_and_res).and_return("1,2")
-    player.move(board)
-    expect(board.board).to eq([["_","X","O"],["O","X","X"],["_","O","X"]])
-  end
 end
