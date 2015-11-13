@@ -1,6 +1,4 @@
-require_relative 'view'
 class Player
-  include View
   attr_accessor :marker, :opponent_marker, :name, :last_move
   def initialize(args={})
     @marker = args[:marker] || default_marker
@@ -41,14 +39,19 @@ class Player
   private
 
   def get_name
-    @name = disp_and_res("What's the name for #{self.class}?")
+    @name = display_message_and_get_response("What's the name for #{self.class}?")
   end
 
   def get_marker(other_player_marker = nil)
     @opponent_marker = other_player_marker if other_player_marker
-    @marker = disp_and_res("What would you like your #{self.class} marker to be (ie 'X')?")
+    @marker = display_message_and_get_response("What would you like your #{self.class} marker to be (ie 'X')?")
     until @marker.length == 1 && @marker != other_player_marker
-      @marker = disp_and_res("What would you like your marker to be (ie 'X')? It can only be one character long, and it can't be the same as the other player's")
+      @marker = display_message_and_get_response("What would you like your marker to be (ie 'X')? It can only be one character long, and it can't be the same as the other player's")
     end
+  end
+
+  def display_message_and_get_response(message)
+    puts message
+    return gets.chomp
   end
 end
