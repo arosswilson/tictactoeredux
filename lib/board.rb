@@ -68,14 +68,6 @@ class Board
     end
     top_row
   end
-  def game_over?
-    game_over = nil
-    game_over ||= row_check(board)
-    game_over ||= col_check
-    game_over ||= diag_check
-    game_over ||= tie?
-    game_over
-  end
 
   private
 
