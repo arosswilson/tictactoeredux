@@ -17,7 +17,7 @@ describe Computer do
   end
 
   it "should updated computer info" do
-    allow(computer).to receive(:disp_and_res).and_return('V')
+    allow(computer).to receive(:display_message_and_get_response).and_return('V')
     computer.get_info("B")
     expect(computer.marker).to eq("V")
     expect(computer.opponent_marker).to eq("B")
