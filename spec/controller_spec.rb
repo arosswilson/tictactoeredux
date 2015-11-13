@@ -41,12 +41,6 @@ describe Controller do
     expect(controller.players[1].class).to eq(Human)
   end
 
-  it "should make a move for a player" do
-    allow(player).to receive(:disp_and_res).and_return("1,1")
-    controller_two.send :move, controller_two.players[0]
-    expect(controller.board.board).to eq([["_","_","_"],["_","X","_"],["_","_","_"]])
-  end
-
   describe "it should find the winner" do
     it "should report the winner on a won board" do
       expect(STDOUT).to receive(:puts).with("Winner: Computer Computer")
