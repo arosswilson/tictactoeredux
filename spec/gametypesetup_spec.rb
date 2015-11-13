@@ -1,7 +1,6 @@
 require_relative 'spec_helper'
 
 describe GametypeSetup do
-  let(:setup) {GametypeSetup.new}
   let(:game) {Game.new}
   it "should welcome the players when it starts" do
     expect(STDOUT).to receive(:puts).with("Welcome to Tic-Tac-Toe!")
