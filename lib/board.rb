@@ -7,10 +7,28 @@ class Board
   end
 
   def possible_moves
+    possible_moves = stringify_spaces_on_board
+    return remove_nils(possible_moves)
+  end
+
+  def stringify_spaces_on_board
     possible_moves = []
     @board.each.with_index do |row, c_num|
-      row.each.with_index {|space, r_num| possible_moves << "#{c_num.to_s},#{r_num.to_s}" if space == "_"}
+      iterate_through_spaces_in_a_row(row, c_num, possible_moves)
     end
+    possible_moves
+  end
+
+  def stringify_column_and_row_if_space_is_blank(column, row, space)
+    return "#{column.to_s},#{row.to_s}" if space =="_"
+  end
+
+  def iterate_through_spaces_in_a_row(row, column, array)
+    row.each.with_index {|space, r_num| array << stringify_column_and_row_if_space_is_blank(column, r_num, space)}
+  end
+
+  def remove_nils(possible_moves)
+    possible_moves.delete(nil)
     possible_moves
   end
 
@@ -35,13 +53,21 @@ class Board
   end
 
   def to_s
-    display = " " +('0'...(board_size.to_s)).to_a.join(' ') + "\n"
-    board.each.with_index do |row, i|
-      display += (i.to_s + row.join("|")+ "\n")
-    end
+    top_row = create_the_top_display_row
+    display = add_additional_board_rows(top_row)
     return display
   end
 
+  def create_the_top_display_row
+    " " +('0'...(board_size.to_s)).to_a.join(' ') + "\n"
+  end
+
+  def add_additional_board_rows(top_row)
+    board.each.with_index do |row, i|
+      top_row += (i.to_s + row.join("|")+ "\n")
+    end
+    top_row
+  end
   def game_over?
     game_over = nil
     game_over ||= row_check(board)
