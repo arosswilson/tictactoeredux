@@ -1,5 +1,4 @@
 require_relative 'board.rb'
-require_relative 'view'
 require_relative 'player'
 class Computer < Player
   attr_accessor :rules
@@ -22,7 +21,6 @@ class Computer < Player
   def move(board)
     update_rules(board)
     minimax(board,true)
-    # board.move(marker, @last_move)
   end
 
   private
