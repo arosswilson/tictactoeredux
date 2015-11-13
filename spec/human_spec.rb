@@ -16,7 +16,7 @@ describe Human do
   end
 
   it "should get player info" do
-    allow(player).to receive(:disp_and_res).and_return("Ross",'V')
+    allow(player).to receive(:display_message_and_get_response).and_return("Ross",'V')
     player.get_info
     expect(player.name).to eq("Ross")
     expect(player.marker).to eq("V")
