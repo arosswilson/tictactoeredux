@@ -23,10 +23,6 @@ describe Board do
     end
   end
 
-  it "creates a new board" do
-    expect(Board.newboard(winner).board).to eq([["_","_","_"],["_","_","_"],["_","_","_"]])
-  end
-
   it "undoes a move" do
     board.undo('0,1')
     expect(board.board).to eq([["_","_","O"],["O","X","_"],["_","O","X"]])

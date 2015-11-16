@@ -11,10 +11,6 @@ class Board
     return remove_nils(possible_moves)
   end
 
-  def self.newboard(board)
-    return Board.new({board_size: board.board_size})
-  end
-
   def move(marker, position)
     x,y = sanitize_position(position)
     return nil if board[x][y] !='_'
