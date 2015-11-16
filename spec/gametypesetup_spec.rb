@@ -31,6 +31,6 @@ describe GametypeSetup do
     allow(GametypeSetup).to receive(:gets).and_return("Y")
     GametypeSetup.play_again?(finished_game)
     expect(finished_game.board.board).to eq([["_","_","_"], ["_","_","_"], ["_","_","_"]])
-    expect(finished_game.turn.users_move).to eq("nil")
+    expect(finished_game.turn.users_move).to eq(nil)
   end
 end
