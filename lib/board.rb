@@ -22,29 +22,12 @@ class Board
     board[x][y] = "_"
   end
 
-  def to_s
-    top_row = create_the_top_display_row
-    display = add_additional_board_rows(top_row)
-    return display
-  end
-
   private
 
   def sanitize_position(position)
     pos_array = position.split(',')
     pos_array.map!{|cord| cord.to_i}
     return pos_array
-  end
-
-  def create_the_top_display_row
-    " " +('0'...(board_size.to_s)).to_a.join(' ') + "\n"
-  end
-
-  def add_additional_board_rows(top_row)
-    board.each.with_index do |row, i|
-      top_row += (i.to_s + row.join("|")+ "\n")
-    end
-    top_row
   end
 
   def stringify_spaces_on_board
