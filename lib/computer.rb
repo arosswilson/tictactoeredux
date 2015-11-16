@@ -8,11 +8,11 @@ class Computer < Player
   end
 
   def default_marker
-    nil
+    "O"
   end
 
   def def_op_marker
-    nil
+    "X"
   end
 
   def def_name
