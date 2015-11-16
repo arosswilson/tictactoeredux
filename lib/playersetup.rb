@@ -38,7 +38,7 @@ class PlayerSetup
   end
 
   def self.get_name(player)
-    player.name = display_message_and_get_response("What's the name for #{self.class}?")
+    player.name = display_message_and_get_response("What's the name for #{player.class}?")
   end
 
   def self.get_marker(player, markers=[])
