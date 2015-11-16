@@ -32,7 +32,7 @@ class PlayerSetup
   def self.update_opponent_marker_for_computers(game)
     game.players.each.with_index do |player, i|
       if player.class == Computer
-        player.opponent_marker = players[i-1].marker
+        player.opponent_marker = game.players[i-1].marker
       end
     end
   end
