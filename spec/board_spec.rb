@@ -27,8 +27,4 @@ describe Board do
     board.undo('0,1')
     expect(board.board).to eq([["_","_","O"],["O","X","_"],["_","O","X"]])
   end
-
-  it "should stringify the board" do
-    expect(board.to_s).to eq(" 0 1 2\n0_|X|O\n1O|X|_\n2_|O|X\n")
-  end
 end
