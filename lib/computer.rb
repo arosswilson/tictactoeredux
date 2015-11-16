@@ -1,14 +1,18 @@
 require_relative 'board.rb'
-require_relative 'view'
 require_relative 'player'
 class Computer < Player
+  attr_accessor :rules, :opponent_marker
+  def post_initialize(args)
+    @rules = Rules.new
+    @opponent_marker = args[:opponent_marker] || def_op_marker
+  end
 
   def default_marker
-    nil
+    "O"
   end
 
   def def_op_marker
-    nil
+    "X"
   end
 
   def def_name
@@ -16,14 +20,19 @@ class Computer < Player
   end
 
   def move(board)
+    update_rules(board)
     minimax(board,true)
-    # board.move(marker, @last_move)
   end
 
   private
 
+  def update_rules(board)
+    @rules.board_obj = board
+    @rules.board = board.board
+  end
+
   def minimax(board, computers_turn, depth = 0)
-    return score(board, depth) if board.game_over?
+    return score(board, depth) if rules.game_over?
     scores = []
     moves =[]
     board.possible_moves.each do |move|
@@ -41,9 +50,9 @@ class Computer < Player
   end
 
   def score(board, depth)
-    return 10 - depth if board.game_over? == marker
-    return depth - 10 if board.game_over? == opponent_marker
-    return 0 if board.game_over? == "tie"
+    return 10 - depth if rules.game_over? == marker
+    return depth - 10 if rules.game_over? == opponent_marker
+    return 0 if rules.game_over? == "tie"
   end
 
   def best_move(scores, moves, computers_turn)

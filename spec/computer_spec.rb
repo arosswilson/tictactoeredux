@@ -16,13 +16,6 @@ describe Computer do
     expect(computer.name).to eq("Computer")
   end
 
-  it "should updated computer info" do
-    allow(computer).to receive(:disp_and_res).and_return('V')
-    computer.get_info("B")
-    expect(computer.marker).to eq("V")
-    expect(computer.opponent_marker).to eq("B")
-  end
-
   describe "it should make the best move" do
     it "will win if it can" do
       computer.move(board)

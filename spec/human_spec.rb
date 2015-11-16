@@ -10,15 +10,4 @@ describe Human do
   it "should respond to marker" do
     expect(player.marker).to eq("X")
   end
-
-  it "should respond to opponent marker" do
-    expect(player.opponent_marker).to eq("O")
-  end
-
-  it "should get player info" do
-    allow(player).to receive(:disp_and_res).and_return("Ross",'V')
-    player.get_info
-    expect(player.name).to eq("Ross")
-    expect(player.marker).to eq("V")
-  end
 end

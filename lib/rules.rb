@@ -1,7 +1,7 @@
 class Rules
-  attr_reader :board, :board_obj
+  attr_accessor :board_obj, :board
   def initialize(args={})
-    @board_obj = args[:board]
+    @board_obj = args[:board] || Board.new
     @board = @board_obj.board
   end
 

@@ -13,16 +13,6 @@ describe Board do
     expect(test_board.board[1][1]).to eq("X")
   end
 
-  describe "finds winning boards" do
-    it "finds winning boards" do
-      expect(winner.game_over?).to be_truthy
-    end
-
-    it "it knows when a board isn't a winner" do
-      expect(board.game_over?).to be_falsey
-    end
-  end
-
   describe "finds possible moves" do
     it "shows possible moves on game in progress" do
       expect(board.possible_moves).to eq(["0,0", "1,2", "2,0"])
@@ -40,16 +30,6 @@ describe Board do
   it "undoes a move" do
     board.undo('0,1')
     expect(board.board).to eq([["_","_","O"],["O","X","_"],["_","O","X"]])
-  end
-
-  describe "the move validator" do
-    it "returns true if the move is a possible move" do
-      expect(board.validate_move('1,2')).to be_truthy
-    end
-
-    it "returns false if the move isn't a possible move" do
-      expect(board.validate_move('1,1')).to be_falsey
-    end
   end
 
   it "should stringify the board" do
