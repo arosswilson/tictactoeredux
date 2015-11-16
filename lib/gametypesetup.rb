@@ -1,6 +1,6 @@
 require_relative 'human'
 require_relative 'computer'
-class GametypeSetup #consider extracting update player info and choose order to a player setup class
+class GametypeSetup
 
   def self.run(game)
     clear
