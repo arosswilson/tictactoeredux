@@ -1,9 +1,10 @@
 require_relative 'board.rb'
 require_relative 'player'
 class Computer < Player
-  attr_accessor :rules
+  attr_accessor :rules, :opponent_marker
   def post_initialize(args)
     @rules = Rules.new
+    @opponent_marker = args[:opponent_marker] || def_op_marker
   end
 
   def default_marker
