@@ -5,10 +5,6 @@ class Human < Player
     "X"
   end
 
-  def def_op_marker
-    "O"
-  end
-
   def def_name
     "Human"
   end
