@@ -40,4 +40,27 @@ class GametypeSetup #consider extracting update player info and choose order to 
     puts message
     return gets.chomp
   end
+
+  def self.start_new_game_loop(game)
+    game.board = Board.new
+    game.rules = Rules.new({board: game.board})
+    game.turn = Turn.new
+  end
+
+  def self.end_game?(response, game)
+    if response == 'n'
+      game.keep_playing = false
+    else
+      start_new_game_loop(game)
+    end
+  end
+
+  def self.play_again?(game)
+    res = display_message_and_get_response("want to play again? Please enter 'Y' or 'N'").downcase
+    until res == "y" || res == "n"
+      res = display_message_and_get_response("invalid response, please enter 'Y' or 'N'.").downcase
+    end
+    end_game?(res, game)
+  end
+
 end
