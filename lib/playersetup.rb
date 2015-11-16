@@ -3,6 +3,7 @@ class PlayerSetup
   def self.run(game)
     update_player_info(game)
     choose_order(game)
+    update_opponent_marker_for_computers(game)
   end
 
   def self.display_message_and_get_response(message)
@@ -19,10 +20,31 @@ class PlayerSetup
   end
 
   def self.update_player_info(game)
+    markers=[]
     game.players.each_with_index do |player, i|
       puts "For #{player.class.superclass} #{(i+1)}: #{player.class} \n"
-      player.get_info(game.players[i-1].marker)
-      game.players[i-1].update_op_mrkr(player.marker)
+      get_name(player)
+      get_marker(player, markers)
+      markers << player.marker
+    end
+  end
+
+  def self.update_opponent_marker_for_computers(game)
+    game.players.each.with_index do |player, i|
+      if player.class == Computer
+        player.opponent_marker = players[i-1].marker
+      end
+    end
+  end
+
+  def self.get_name(player)
+    player.name = display_message_and_get_response("What's the name for #{self.class}?")
+  end
+
+  def self.get_marker(player, markers=[])
+    player.marker = display_message_and_get_response("What would you like your #{self.class} marker to be (ie 'X')?")
+    until player.marker.length == 1 && !markers.include?(player.marker)
+      player.marker = display_message_and_get_response("What would you like your marker to be (ie 'X')? It can only be one character long, and it can't be the same as the other player's")
     end
   end
 
