@@ -38,7 +38,7 @@ class Game
   end
 
   def find_winner
-    marker = board.game_over? if board.game_over?
+    marker = rules.game_over? if rules.game_over?
     players.each do |player|
       if marker == player.marker
         return puts"Winner: #{player.class} #{player.name}"
