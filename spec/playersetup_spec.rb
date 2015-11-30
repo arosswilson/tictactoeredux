@@ -27,7 +27,7 @@ describe PlayerSetup do
   it "should update opponent marker for computers" do
     allow(game.gamesetup).to receive(:display_message_and_get_response).and_return("3")
     game.players = game.gamesetup.get_game_type
-    allow(playersetup).to receive(:display_message_and_get_response).and_return("Ross","V","Miles","O", "1")
+    allow(game.playersetup).to receive(:display_message_and_get_response).and_return("Ross","V","Miles","O", "1")
     game.playersetup.run(game.players)
     expect(game.players[0]).to be_a(Human)
     expect(game.players[1]).to be_a(Computer)
