@@ -7,7 +7,7 @@ describe GametypeSetup do
   let(:finished_game){Game.new({board: board })}
   it "should welcome the players when it starts" do
     expect(STDOUT).to receive(:puts).with("Welcome to Tic-Tac-Toe!")
-    GametypeSetup.welcome_message
+    setup.welcome_message
   end
 
   it "should clear the screen" do
