@@ -5,10 +5,10 @@ describe PlayerSetup do
   let(:human) {Human.new}
   let(:playersetup) {PlayerSetup.new}
   it "should change the order of the players based on user input" do
-    allow(GametypeSetup).to receive(:gets).and_return("3")
+    allow(game).to receive(:gets).and_return("3")
     allow(PlayerSetup).to receive(:gets).and_return("2")
-    GametypeSetup.get_game_type(game)
-    PlayerSetup.choose_order(game)
+    game.gamesetup.get_game_type
+    playersetup.choose_order(game.players)
     expect(game.players[0]).to be_a(Computer)
     expect(game.players[1]).to be_a(Human)
   end
