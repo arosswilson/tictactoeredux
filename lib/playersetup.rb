@@ -6,17 +6,17 @@ class PlayerSetup
     update_opponent_marker_for_computers(game)
   end
 
-  def self.display_message_and_get_response(message)
+  def display_message_and_get_response(message)
     puts message
     return gets.chomp
   end
 
-  def self.choose_order(game)
+  def choose_order(players)
     response =''
     until response == '1' || response == '2'
-      response = display_message_and_get_response("Please enter the number for the player that you want to go first: \n 1. #{game.players[0].class} #{game.players[0].marker} \n 2. #{game.players[1].class} #{game.players[1].marker}")
+      response = display_message_and_get_response("Please enter the number for the player that you want to go first: \n 1. #{players[0].class} #{players[0].marker} \n 2. #{players[1].class} #{players[1].marker}")
     end
-    game.players.reverse! if response == '2'
+    players.reverse! if response == '2'
   end
 
   def self.update_player_info(game)
