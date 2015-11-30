@@ -22,7 +22,7 @@ describe GametypeSetup do
   end
 
   it "should prompt user for game type" do
-    allow(GametypeSetup).to receive(:gets).and_return("3")
+    allow(setup).to receive(:gets).and_return("3")
     players = setup.get_game_type
     expect(players[0]).to be_a(Human)
     expect(players[1]).to be_a(Computer)
