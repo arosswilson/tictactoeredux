@@ -16,16 +16,16 @@ describe GametypeSetup do
   end
 
   it "should create players" do
-    GametypeSetup.create_players("1", game)
-    expect(game.players[0]).to be_a(Human)
-    expect(game.players[1]).to be_a(Human)
+    players = setup.create_players("1")
+    expect(players[0]).to be_a(Human)
+    expect(players[1]).to be_a(Human)
   end
 
   it "should prompt user for game type" do
     allow(GametypeSetup).to receive(:gets).and_return("3")
-    GametypeSetup.get_game_type(game)
-    expect(game.players[0]).to be_a(Human)
-    expect(game.players[1]).to be_a(Computer)
+    players = setup.get_game_type
+    expect(players[0]).to be_a(Human)
+    expect(players[1]).to be_a(Computer)
   end
 
   it "should create a new board based on user input" do
