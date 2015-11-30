@@ -28,7 +28,7 @@ class Game
 
   def get_started
     players = gamesetup.run
-    PlayerSetup.run(self)
+    playersetup.run(players)
   end
 
   def game_loop
