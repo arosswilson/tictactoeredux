@@ -19,9 +19,9 @@ class PlayerSetup
     players.reverse! if response == '2'
   end
 
-  def self.update_player_info(game)
+  def update_player_info(players)
     markers=[]
-    game.players.each_with_index do |player, i|
+    players.each_with_index do |player, i|
       puts "For #{player.class.superclass} #{(i+1)}: #{player.class} \n"
       get_name(player)
       get_marker(player, markers)
@@ -37,11 +37,11 @@ class PlayerSetup
     end
   end
 
-  def self.get_name(player)
+  def get_name(player)
     player.name = display_message_and_get_response("What's the name for #{player.class}?")
   end
 
-  def self.get_marker(player, markers=[])
+  def get_marker(player, markers=[])
     player.marker = display_message_and_get_response("What would you like your #{self.class} marker to be (ie 'X')?")
     until player.marker.length == 1 && !markers.include?(player.marker)
       player.marker = display_message_and_get_response("What would you like your marker to be (ie 'X')? It can only be one character long, and it can't be the same as the other player's")
