@@ -1,6 +1,7 @@
 require_relative 'spec_helper'
 
 describe GametypeSetup do
+  let(:setup) {GametypeSetup.new}
   let(:game) {Game.new}
   let(:board) {Board.new({board_size: 3, board:[["X","O","X"],["X","O","O"], ["O","X","X"]] })}
   let(:finished_game){Game.new({board: board })}
@@ -11,7 +12,7 @@ describe GametypeSetup do
 
   it "should clear the screen" do
     expect(STDOUT).to receive(:puts).with("\e[H\e[2J")
-    GametypeSetup.clear
+    setup.clear
   end
 
   it "should create players" do
