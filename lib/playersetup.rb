@@ -1,9 +1,9 @@
 class PlayerSetup
 
-  def self.run(game)
-    update_player_info(game)
-    choose_order(game)
-    update_opponent_marker_for_computers(game)
+  def run(players)
+    update_player_info(players)
+    choose_order(players)
+    update_opponent_marker_for_computers(players)
   end
 
   def display_message_and_get_response(message)
@@ -29,10 +29,10 @@ class PlayerSetup
     end
   end
 
-  def self.update_opponent_marker_for_computers(game)
-    game.players.each.with_index do |player, i|
+  def update_opponent_marker_for_computers(players)
+    players.each.with_index do |player, i|
       if player.class == Computer
-        player.opponent_marker = game.players[i-1].marker
+        player.opponent_marker = players[i-1].marker
       end
     end
   end
