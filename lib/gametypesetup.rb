@@ -8,11 +8,11 @@ class GametypeSetup
     get_game_type(game)
   end
 
-  def self.welcome_message
+  def welcome_message
     puts "Welcome to Tic-Tac-Toe!"
   end
 
-  def self.clear
+  def clear
     puts "\e[H\e[2J"
   end
 
