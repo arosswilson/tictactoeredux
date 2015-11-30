@@ -5,12 +5,13 @@ require_relative 'gametypesetup'
 require_relative 'playersetup'
 require_relative 'ShowBoard'
 class Game
-  attr_accessor :board, :rules, :players, :turn, :keep_playing, :gamesetup
+  attr_accessor :board, :rules, :players, :turn, :keep_playing, :gamesetup, :playersetup
   attr_reader :moves
   def initialize(args={})
     @board = args[:board] || Board.new({board_size: 3})
     @rules = args[:rules] || Rules.new({board: board})
     @gamesetup = GametypeSetup.new
+    @playersetup = PlayerSetup.new
     @players = args[:players] || []
     @turn = args[:turn] || Turn.new
     @keep_playing = true
