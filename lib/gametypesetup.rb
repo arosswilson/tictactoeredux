@@ -5,7 +5,7 @@ class GametypeSetup
   def run
     clear
     welcome_message
-    get_game_type(game)
+    get_game_type
   end
 
   def welcome_message
