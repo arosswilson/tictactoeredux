@@ -27,8 +27,8 @@ class Game
   end
 
   def get_started
-    players = gamesetup.run
-    playersetup.run(players)
+    @players = gamesetup.run
+    @players = playersetup.run(@players)
   end
 
   def game_loop
@@ -69,13 +69,13 @@ class Game
 
   def start_new_game_loop
     @board = Board.new
-    rules = Rules.new({board: @board})
-    turn = Turn.new
+    @rules = Rules.new({board: @board})
+    @turn = Turn.new
   end
 
   def end_game?(response)
     if response == 'n'
-      keep_playing = false
+      @keep_playing = false
     else
       start_new_game_loop
     end
